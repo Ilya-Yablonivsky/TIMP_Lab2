@@ -1,0 +1,33 @@
+#pragma once
+#include <iostream>
+#include <string>
+#include <vector>
+#include <map>
+#include <cctype>
+#include <locale>
+#include <codecvt>
+#include <algorithm>
+//#include <UnitTest++/UnitTest++.h>
+
+using namespace std;
+
+class TableCipher
+{
+private:
+    int newkey;
+    string getValidOpenText(const string & s);
+public:
+    TableCipher()=delete;
+    TableCipher(const int& key) :newkey(key) {}; 
+    string encrypt(const string& open_st);   
+    string decrypt(const string& cipher_st);
+};
+
+class cipher_error: public invalid_argument {
+public:
+	explicit cipher_error (const string& what_arg):
+		invalid_argument(what_arg) {}
+		
+	explicit cipher_error (const char* what_arg):
+		invalid_argument(what_arg) {}
+};
